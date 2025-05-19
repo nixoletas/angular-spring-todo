@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error Occurred</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .error-container {
+            max-width: 650px;
+            width: 100%;
+            padding: 40px 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .error-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .error-icon {
+            font-size: 72px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .error-status {
+            font-size: 60px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .error-details {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+
+        .support-text {
+            font-size: 15px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
+        }
+
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(41, 128, 185, 0.4);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <i class="fas fa-exclamation-circle error-icon"></i>
+    <div class="error-status" th:text="${status}">500</div>
+    <h1>Oops! Something went wrong</h1>
+    <div class="error-message" th:text="${error}">Error</div>
+    <p class="error-details" th:text="${message}">Detailed error message</p>
+    <p class="support-text">This is a custom error template. Project by <a href="https://github.com/nixoletas">Nicholas Miyasato</a></p>
+    <a href="/" class="home-button">
+        <i class="fas fa-home"></i> Return to Home
+    </a>
+    <div class="footer">
+        &copy; <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}">2025</span> <a href="https://nickmiyasato.com.br">nickmiyasato.com.br</a>
+    </div>
+</div>
+</body>
+</html>
